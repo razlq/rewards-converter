@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class RewardsConverter {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
@@ -16,5 +17,29 @@ public class RewardsConverter {
         System.out.println("converting $" + input_value + " to miles");
         var rewardsValue = new RewardValue(cashValue);
         System.out.println("$" + input_value + " is worth " + rewardsValue.getMilesValue() + " miles");
+    }
+
+    public static class RewardValue {
+            private double cashValue;
+            private int milesValue;
+
+            public RewardValue(double cashValue) {
+                this.cashValue = cashValue;
+                this.milesValue = (int) (cashValue / 0.0035);
+            }
+
+            public RewardValue(int milesValue) {
+                this.milesValue = milesValue;
+                this.cashValue = milesValue * 0.0035;
+            }
+
+            public double getCashValue() {
+                return cashValue;
+            }
+
+            public int getMilesValue() {
+                return milesValue;
+            }
+
     }
 }
